@@ -109,7 +109,7 @@ class TransporterMap(knn.Container):
         self.map.save(directory + '/map')
 
 
-def make(type, in_channels, z_channels, keypoints, combine_mode='max', load=None, transfer_load=None, map_device=None):
+def make(type, in_channels, z_channels, keypoints, combine_mode='max', load=None, transfer_load=None, map_device=None, sigma=0.1):
     """
     :param type
     :param in_channels
@@ -126,7 +126,7 @@ def make(type, in_channels, z_channels, keypoints, combine_mode='max', load=None
     decoder = knn.Unit(z_channels, in_channels, decoder_core)
     keypoint_core = vgg.make_layers(vgg.vgg_cfg[type], nonlinearity=nonlinearity, nonlinearity_kwargs=kwargs)
     keypoint = knn.Unit(in_channels, keypoints, keypoint_core)
-    keymapper = knn.GaussianLike(sigma=0.1)
+    keymapper = knn.GaussianLike(sigma=sigma)
     transporter_net = TransporterNet(encoder, keypoint, keymapper, decoder, init_weights=True,
                                      combine_method=combine_mode)
 
