@@ -11,5 +11,17 @@ cma_step_mode: auto
 cma_step_decay: 0.001
 cma_oversample: 0
 
+lr: 1e-4
+max_epochs: 50
+sample_rate: 4
+batch_size: 32
+num_workers: 1
+name: default
+data_root: UltrasoundVideoSummarization/
+LUS_num_chan: 10
+LUS_num_keypoints: 10
+htmaplam: 0.1
+device: cuda
+
 policy_action_select_mode: argmax
 policy_depth: 1
