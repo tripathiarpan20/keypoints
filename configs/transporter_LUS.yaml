@@ -1,0 +1,13 @@
+checkpoint_freq: 1000
+
+model_type: F
+model_in_channels: 10
+model_z_channels : 64
+model_keypoints : 10
+opt_level: O2
+
+dataset: celeba
+
+
+batch_size: 16
+epochs: 50
